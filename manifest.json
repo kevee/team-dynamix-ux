@@ -1,0 +1,14 @@
+{
+   "name": "TDX UX",
+   "version": "1.0",
+   "description": "Fix the annoying user interface of Team Dynamix",
+   "content_scripts": [
+    {
+      "matches": ["https://*.teamdynamix.com/*"],
+      "all_frames": true,
+      "css": ["tdxux.css"],
+      "js": ["jquery.js", "tdxux.js"]
+    }
+  ],
+   "manifest_version": 2
+ }
