@@ -3,7 +3,10 @@
 var uxFixes = {
   removePopups: function() {
     var cleanedUrl = '';
-    $('a').each(function() {
+    $('a[href]').each(function() {
+      if(!$(this).attr('href')) {
+        return;
+      }
       if($(this).attr('href').search('javascript:openWin') > -1) {
         cleanedUrl = $(this).attr('href')
           .replace('javascript:openWin(\'', '')
@@ -16,6 +19,28 @@ var uxFixes = {
         $(this).attr('href', cleanedUrl);
       }
     });
+  },
+  fixUpdateTicket: function() {
+    if(!$('#btnUpdateTicket').length) {
+      return;
+    }
+    var onClick = $('#btnUpdateTicket').attr('onClick')
+      .replace('javascript:openWin(\'', '')
+      .replace(/\',(.*)$/, "");
+    var $link = $('<a id="btnUpdateTicket" class="btn btn-primary btn-sm">');
+    $link.html($('#btnUpdateTicket').html());
+    $link.attr('href', onClick);
+    var $li = $('<li>');
+    $li.append($link);
+    $('#btnUpdateTicket').remove();
+    $('#divTabHeader ul').prepend($li);
+  },
+
+  moveDescription: function() {
+    if(!$('#upDescription').length) {
+      return;
+    }
+    $('#upDetails').before($('#upDescription'));
   }
 };
 
