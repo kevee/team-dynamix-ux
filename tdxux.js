@@ -1,23 +1,12 @@
 
+window.tdxUxOpenWin = function(url,width,height,name,scrollbars) {
+  window.location.href = url;
+};
 
 var uxFixes = {
   removePopups: function() {
-    var cleanedUrl = '';
-    $('a[href]').each(function() {
-      if(!$(this).attr('href')) {
-        return;
-      }
-      if($(this).attr('href').search('javascript:openWin') > -1) {
-        cleanedUrl = $(this).attr('href')
-          .replace('javascript:openWin(\'', '')
-          .replace(/\',(.*)$/, "")
-          .replace(/\\x2f/g, '/')
-          .replace(/\\x3a/g, ':')
-          .replace(/\\x3f/g, '?')
-          .replace(/\\x3d/g, '=');
-        $(this).attr('target', '_blank');
-        $(this).attr('href', cleanedUrl);
-      }
+    $('a[href*=openWin]').each(function() {
+      $(this).attr('href', $(this).attr('href').replace('openWin(', 'tdxUxOpenWin('));
     });
   },
   fixUpdateTicket: function() {
@@ -33,7 +22,7 @@ var uxFixes = {
     var $li = $('<li>');
     $li.append($link);
     $('#btnUpdateTicket').remove();
-    $('#divTabHeader ul').prepend($li);
+    $('#divTabHeader > ul').prepend($li);
   },
 
   moveDescription: function() {
@@ -45,7 +34,9 @@ var uxFixes = {
 };
 
 $(document).ready(function() {
-
+  if(window.location.href.search('TDAdmin') > -1) {
+    return;
+  }
   var observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
       if (mutation.addedNodes && mutation.addedNodes.length > 0) {

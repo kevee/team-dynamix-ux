@@ -1,3 +1,7 @@
 #btnUpdateTicket {
   padding: 4px 17px;
 }
+
+#btnUpdateTicket:hover {
+  background: inherit;
+}
