@@ -82,6 +82,36 @@ var uxFixes = {
     $('#pcRequestor_divPersonInfo .media-body').append($('#divAcctDept'));
     $('#divDetails .gutter-top').prepend('<div class="row"></div>');
   },
+
+  loadPersonData: function() {
+    if(!$('#pcRequestor_divPersonInfo').length) {
+      return;
+    }
+    var email = $('#pcRequestor_divPersonInfo a[href*=mailto]').first().text().trim();
+    $.getJSON('https://csumb.edu/csumb/api/directory?email=' + email, function(directory) {
+      if(!directory.user) {
+        return;
+      }
+      var $wrapper = $('<div class="tdxux-directory"><h3>Directory information</h3></div>');
+      if(directory.user.building) {
+        $wrapper.append('<div><strong>Building: </strong><a href="' + directory.user.building.link + '" target="_blank">' + directory.user.building.title + '</a> - ' + directory.user.building.code + '</div>');
+      }
+      if(directory.user.floor) {
+        $wrapper.append('<div><strong>Floor:</strong> ' + directory.user.floor + '</div>');
+      }
+      if(directory.user.suite) {
+        $wrapper.append('<div><strong>Suite:</strong> ' + directory.user.suite + '</div>');
+      }
+      if(directory.user.room) {
+        $wrapper.append('<div><strong>Room:</strong> ' + directory.user.room + '</div>');
+      }
+      if(directory.user.phone) {
+        $wrapper.append('<div><strong>Phone:</strong> ' + directory.user.phone + '</div>');
+      }
+      $('#pcRequestor_divPersonInfo .media-body').append($wrapper);
+    });
+  },
+
 // service tag, model, serial number
   addAssets: function() {
     if(!$('#tabAssetsCIs').length) {
@@ -94,10 +124,11 @@ var uxFixes = {
                               .replace(/\',(.*)$/, "");
         $.get(location, function(asset) {
           var $asset = $(asset);
-          var $pane = $('<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title"><a></a></h3></div><div class="panel-body"></div></div>');
+          var $pane = $('<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title"><a href=""></a></h3></div><div class="panel-body"></div></div>');
           $pane.find('.panel-body').append($asset.find('#divSerialNumber'));
           $pane.find('.panel-body').append($asset.find('#divProductModel'));
-          $pane.find('.pane-title a').attr('href', asset);
+          $pane.find('.panel-body').append($asset.find('#divLocation'));
+          $pane.find('.panel-title a').attr('href', location);
           $pane.find('.panel-title a').text('Asset ' + $asset.find('h1').text());
 
           $('#pcRequestor_divPersonInfo').parents('.panel').after($pane);
@@ -105,6 +136,20 @@ var uxFixes = {
       });
 
     });
+  },
+
+  fixUpdatePage: function() {
+    if(!$('form[action*="Tickets/Update"]').length) {
+      return;
+    }
+    $('.alert.alert-warning').remove();
+    var id = $('h1 + div').text().trim().replace('Service Request ID: ', '');
+    var ticketPage = window.location.href.replace('Tickets/Update', 'Tickets/TicketDet.aspx');
+    $.get(ticketPage, function(ticket) {
+      var $ticket = $(ticket);
+      $('#divComments').before('<div class="alert alert-info">' + $ticket.find('#ttDescription').html() +'</div>');
+    });
+    $('#btnSubmit').after('<a href="'+ ticketPage +'" class="btn btn-default">Cancel</a>');
   }
 
 };

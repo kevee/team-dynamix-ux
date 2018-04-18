@@ -21,3 +21,8 @@ body.tdxux {
 h4.media-heading {
   font-size: 2rem;
 }
+
+.tdxux-directory h3 {
+  font-size: 2rem;
+  font-weight: bold;
+}
