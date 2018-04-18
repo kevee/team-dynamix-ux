@@ -3,7 +3,8 @@ Chrome plugin to fix the annoying interface Team Dynamix left laying around from
 
 ## How to install
 
-* Use the **Clone or download** button above to download and unpackage the file.
+* Use the **Clone or download** button above to download the file.
+* Unarchive the file.
 * Go to `chrome://extensions`.
 * Toggle the **Developer mode** toggle above.
 * Click **Load unpacked** and select the *folder* `team-dynamix-ux-master`
