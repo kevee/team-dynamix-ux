@@ -7,4 +7,4 @@ Chrome plugin to fix the annoying interface Team Dynamix left laying around from
 * Unarchive the file.
 * Go to `chrome://extensions`.
 * Toggle the **Developer mode** toggle above.
-* Click **Load unpacked** and select the *folder* `team-dynamix-ux-master`
+* Click **Load unpacked** and select the *folder* `team-dynamix-ux-master` you just unzipped.
