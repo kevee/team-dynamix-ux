@@ -5,3 +5,15 @@
 #btnUpdateTicket:hover {
   background: inherit;
 }
+
+#backToWork {
+  float: right;
+}
+
+.tdxUxServiceTicket {
+  font-size: 2rem;
+}
+
+body.tdxux {
+  font-size: 16px;
+}
