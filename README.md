@@ -1,5 +1,5 @@
 # tdx-ux
-Chrome plugin to fix the annoying interface quirks of Team Dynamix.
+Chrome plugin to fix the annoying interface Team Dynamix left laying around from 1998.
 
 ## How to install
 
