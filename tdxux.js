@@ -6,7 +6,8 @@ var uxFixes = {
     });
     $('[onClick*=openWin]').each(function() {
       var location = $(this).attr('onclick');
-      location = location.replace('javascript:openWin(\'', '')
+      location = location.replace('javascript:', '')
+        .replace('openWin(\'', '')
         .replace(/\',(.*)$/, "");
       $(this).removeAttr('onclick');
       var $clone = $(this).clone(false);
