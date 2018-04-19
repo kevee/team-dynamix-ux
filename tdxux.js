@@ -150,6 +150,11 @@ var uxFixes = {
       $('#divComments').before('<div class="alert alert-info">' + $ticket.find('#ttDescription').html() +'</div>');
     });
     $('#btnSubmit').after('<a href="'+ ticketPage +'" class="btn btn-default">Cancel</a>');
+  },
+
+  fixTicketReassign: function() {
+    var ticket_id = $('h1 + div').text().replace('Service Request ID: ', '').replace(/\D/g,'').trim();
+    $('#divReassignTicket').replaceWith('<li><a href="https://csumb.teamdynamix.com/TDNext/Apps/364/Tickets/TicketReassign?TicketID=' + ticket_id +'">Reassign</a></li>');
   }
 
 };
@@ -159,7 +164,7 @@ $(document).ready(function() {
     return;
   }
   $('body').addClass('tdxux');
-  $('head').append('<script>console.log("loaded");function tdxUxOpenWin(url,width,height,name,scrollbars) {window.location.href = url;};</script>');
+  $('head').append('<script>function tdxUxOpenWin(url,width,height,name,scrollbars) {window.location.href = url;};</script>');
 
   $('a:contains("My Work")').on('click', function() {
     window.location.href = window.location.href;
