@@ -31,12 +31,69 @@ h4.media-heading {
   margin-bottom: 10px;
 }
 
-.gutter-top-xs, .gutter-bottom-xs, .gutter-top-sm, .gutter-bottom-sm, .gutter-top-md, .gutter-bottom-md, .gutter-top-lg, .gutter-bottom-lg  {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
 
 body .sortable-item .nav.nav-pills a {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+#tdx-ux-unicorns {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+body.tdx-ux-unicorned .gray, body.tdx-ux-unicorned label, body.tdx-ux-unicorned .control-label, body.tdx-ux-unicorned h1, body.tdx-ux-unicorned h2, body.tdx-ux-unicorned h3, body.tdx-ux-unicorned h4, body.tdx-ux-unicorned h5, body.tdx-ux-unicorned h6, body.tdx-ux-unicorned h1 a, body.tdx-ux-unicorned h2 a, body.tdx-ux-unicorned h3 a, body.tdx-ux-unicorned h4 a, body.tdx-ux-unicorned h5 a, body.tdx-ux-unicorned h6 a, body.tdx-ux-unicorned a, body.tdx-ux-unicorned a:link {
+	color: #FF00FF  !important;
+	font-family: "Comic Sans MS", "Marker Felt" !important;
+}
+
+body.tdx-ux-unicorned .badge, body.tdx-ux-unicorned .label, body.tdx-ux-unicorned .btn-primary {
+  background: #FF00FF  !important;
+  color: #fff !important;
+	font-family: "Comic Sans MS", "Marker Felt" !important;
+}
+
+body.tdx-ux-unicorned .organization-link a::after {
+  content: "🦄";
+}
+
+body.tdx-ux-unicorned .organization-link a::before {
+  content: "✨";
+}
+
+body.tdx-ux-unicorned .fa.tdx-ux-fa-0::before {
+  content: "💖";
+}
+
+body.tdx-ux-unicorned .fa.tdx-ux-fa-1::before {
+  content: "🌈";
+}
+
+body.tdx-ux-unicorned .fa.tdx-ux-fa-2::before {
+  content: "🦄";
+}
+
+body.tdx-ux-unicorned .fa.tdx-ux-fa-3::before {
+  content: "🐳";
+}
+
+body.tdx-ux-unicorned .fa.tdx-ux-fa-4::before {
+  content: "😎";
+}
+
+body.tdx-ux-unicorned .fa.tdx-ux-fa-5::before {
+  content: "🍄";
+}
+
+body.tdx-ux-unicorned .fa.tdx-ux-fa-6::before {
+  content: "🍩";
+}
+
+body.tdx-ux-unicorned .fa.tdx-ux-fa-7::before {
+  content: "🎉";
+}
+
+body.tdx-ux-unicorned .fa.tdx-ux-fa-8::before {
+  content: "💞";
 }

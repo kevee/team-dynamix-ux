@@ -168,6 +168,29 @@ var uxFixes = {
       $(this).addClass('tdx-ux-cleaned');
       $(this).find('.gray').html($(this).find('.gray').html().replace('General > ', ''));
     });
+  },
+
+  addUnicorns: function() {
+    if(window.self !== window.top && $(window.parent.document).find('body').hasClass('tdx-ux-unicorned')) {
+      $('body').addClass('tdx-ux-unicorned');
+    }
+    $('.tdbar-settings').append('<button id="tdx-ux-unicorns">🦄</button>');
+    $('#tdx-ux-unicorns').on('click', function(event) {
+      event.preventDefault();
+      $('.fa').each(function() {
+        var className = 'tdx-ux-fa-' + Math.floor(Math.random() * Math.floor(8));
+        $(this).addClass(className);
+      });
+      $('body').toggleClass('tdx-ux-unicorned');
+      $('iframe').each(function() {
+        var iframeDocument = $(this).get(0).contentDocument || $(this).get(0).contentWindow.document;
+        $(iframeDocument).find('body').toggleClass('tdx-ux-unicorned');
+        $(iframeDocument).find('.fa').each(function() {
+          var className = 'tdx-ux-fa-' + Math.floor(Math.random() * Math.floor(8));
+          $(this).addClass(className);
+        });
+      });
+    });
   }
 
 };
