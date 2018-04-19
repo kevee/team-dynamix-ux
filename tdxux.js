@@ -47,7 +47,8 @@ var uxFixes = {
     }
     var selector = '#divHeader';
     if($('#divTabHeader').length) {
-      selector = '#divTabHeader';
+      $('#divTabHeader ul').append('<li>');
+      selector = '#divTabHeader ul li:last';
     }
     $(selector).prepend('<a id="backToWork" href="/TDNext/Apps/MyWork/Default.aspx" class="btn btn-danger">Return to My Work</a>');
   },
@@ -155,6 +156,18 @@ var uxFixes = {
   fixTicketReassign: function() {
     var ticket_id = $('h1 + div').text().replace('Service Request ID: ', '').replace(/\D/g,'').trim();
     $('#divReassignTicket').replaceWith('<li><a href="https://csumb.teamdynamix.com/TDNext/Apps/364/Tickets/TicketReassign?TicketID=' + ticket_id +'">Reassign</a></li>');
+  },
+
+  cleanupTicketListing: function() {
+    if(!$('#upAssignments').length) {
+      return;
+    }
+    $('.sortable-item:not(.tdx-ux-cleaned)').each(function() {
+      $(this).find('.col-sm-8').append($(this).find('.badge'));
+      $(this).find('.row.gutter-bottom-sm').remove();
+      $(this).addClass('tdx-ux-cleaned');
+      $(this).find('.gray').html($(this).find('.gray').html().replace('General > ', ''));
+    });
   }
 
 };
@@ -172,6 +185,7 @@ $(document).ready(function() {
 
   var refresh = function() {
     uxFixes.removePopups();
+    uxFixes.cleanupTicketListing();
     setTimeout(refresh, 500);
   };
   $.each(uxFixes, function() {

@@ -1,4 +1,4 @@
-#btnUpdateTicket {
+#btnUpdateTicket, #backToWork {
   padding: 4px 17px;
 }
 
@@ -25,4 +25,18 @@ h4.media-heading {
 .tdxux-directory h3 {
   font-size: 2rem;
   font-weight: bold;
+}
+
+.disp-group {
+  margin-bottom: 10px;
+}
+
+.gutter-top-xs, .gutter-bottom-xs, .gutter-top-sm, .gutter-bottom-sm, .gutter-top-md, .gutter-bottom-md, .gutter-top-lg, .gutter-bottom-lg  {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+body .sortable-item .nav.nav-pills a {
+  padding-top: 0;
+  padding-bottom: 0;
 }
